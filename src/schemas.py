@@ -6,7 +6,7 @@ from datetime import date
 class ContactModel(BaseModel):
     first_name: str = Field(max_length=25)
     last_name: str = Field(max_length=25)
-    email: EmailStr = Field()
+    email: EmailStr
     phone_number: Optional[str] = Field(max_length=13)
     birthday: Optional[date]
 
@@ -16,3 +16,29 @@ class ContactResponse(ContactModel):
 
     class Config:
         orm_mode = True
+
+
+class UserModel(BaseModel):
+    username: str = Field(min_length=5, max_length=16)
+    email: EmailStr
+    password: str = Field(min_length=8, max_length=20)
+
+
+class UserDb(BaseModel):
+    id: int
+    first_name: str
+    last_name: str
+    email: EmailStr
+    password: str
+    refresh_token: str
+
+
+class UserResponse(BaseModel):
+    user: UserDb
+    detail: str = 'User successfully created'
+
+
+class TokenModel(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = 'bearer'

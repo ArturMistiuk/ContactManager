@@ -11,3 +11,4 @@ app.include_router(auth.router, prefix='/api')
 @app.get('/')
 def read_root():
     return {'message': 'Hello World!'}
+

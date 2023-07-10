@@ -25,12 +25,16 @@ class UserModel(BaseModel):
 
 
 class UserDb(BaseModel):
-    id: int
-    first_name: str
-    last_name: str
+    id: int    # Optional[int]
+    # first_name: str
+    # last_name: str
+    username: str
     email: EmailStr
     password: str
-    refresh_token: str
+    # refresh_token: str
+
+    class Config:
+        orm_mode = True
 
 
 class UserResponse(BaseModel):
@@ -42,3 +46,7 @@ class TokenModel(BaseModel):
     access_token: str
     refresh_token: str
     token_type: str = 'bearer'
+
+
+class RequestEmail(BaseModel):
+    email: EmailStr

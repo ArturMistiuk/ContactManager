@@ -31,6 +31,7 @@ class UserDb(BaseModel):
     username: str
     email: EmailStr
     password: str
+    avatar: str
     # refresh_token: str
 
     class Config:

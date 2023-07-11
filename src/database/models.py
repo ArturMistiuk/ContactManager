@@ -25,4 +25,5 @@ class User(Base):
     email = Column(String, nullable=False, unique=True)
     password = Column(String(255), nullable=False)
     refresh_token = Column(String(255), nullable=True)
+    avatar = Column(String(255), nullable=True)
     confirmed = Column(Boolean, default=False)

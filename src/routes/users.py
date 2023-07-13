@@ -22,16 +22,16 @@ async def read_users_me(current_user: User = Depends(auth_service.get_current_us
 async def update_avatar_user(file: UploadFile = File(), current_user: User = Depends(auth_service.get_current_user),
                              db: Session = Depends(get_db)):
     """
-    The update_avatar_user function is used to update the avatar of a user.
+The update_avatar_user function is used to update the avatar of a user.
     The function takes in an UploadFile object, which contains the file that will be uploaded to Cloudinary.
     It also takes in a User object, which is obtained from auth_service.get_current_user(). This ensures that only
     authenticated users can access this endpoint and change their own avatars (and not anyone else's). Finally, it
     takes in a Session object for database access.
 
-    :param file: UploadFile: Upload the file to cloudinary
-    :param current_user: User: Get the current user from the database
-    :param db: Session: Create a database session
-    :return: The user object
+:param file: UploadFile: Upload the file to cloudinary
+:param current_user: User: Get the current user from the database
+:param db: Session: Create a database session
+:return: The user object
 
     """
     cloudinary.config(

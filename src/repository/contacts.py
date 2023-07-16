@@ -145,7 +145,6 @@ The get_upcoming_birthdays function returns a list of contacts whose birthday is
 :rtype: List[Contact]
     """
     contacts = db.query(Contact).filter(Contact.user_id == user.id)
-    # users = {contact.id: contact.birthday for contact in contacts if contact.birthday}
     birthdays_boys = is_upcoming_birthday([contact for contact in contacts if contact.birthday])
     birthday_boys_ids = [boy.id for boy in birthdays_boys]
     birthday_boys = db.query(Contact).filter(Contact.id.in_(birthday_boys_ids)).all()
